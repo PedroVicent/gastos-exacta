@@ -1,6 +1,9 @@
 package com.exacta.exactaproject.service;
 
+import java.lang.reflect.Array;
 import java.time.LocalDateTime;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,8 +37,7 @@ public class GastoService {
 		throw new GastoNaoEncontradoException("Gasto não Encontrado!!");
 	}
 	
-	public Iterable<Gasto> getAllGastos() {
+	public List<Gasto> getAllGastos() {
 		return repository.findAll();
-		
 	}
 }
