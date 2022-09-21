@@ -1,8 +1,6 @@
 package com.exacta.exactaproject.service;
 
-import java.lang.reflect.Array;
 import java.time.LocalDateTime;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,6 +19,7 @@ public class GastoService {
 	@Autowired
 	private GastoRepository repository;
 	
+	@Autowired
 	private GastoMapper mapper;
 
 	public Gasto createGasto(GastoDTO gasto) {

@@ -9,6 +9,7 @@ import com.exacta.exactaproject.entity.Gasto;
 import com.exacta.exactaproject.entity.dto.GastoDTO;
 import com.exacta.exactaproject.repository.GastoRepository;
 import com.exacta.exactaproject.util.exception.GastoNaoEncontradoException;
+import com.exacta.exactaproject.util.mapper.GastoMapper;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -33,13 +34,17 @@ public class GastoServiceTests {
 	@Mock
 	private GastoRepository repository;
 	
+	@Mock
+	private GastoMapper mapper;
+	
 	public Gasto newGasto() {
-		return new Gasto(ID, "Pedro", "Batata", LocalDateTime.now(), BigDecimal.TEN, "comida");
+		return new Gasto(ID, "Pedro", "Batata", LocalDateTime.now(), BigDecimal.TEN, null);
 	}
 	
 	@Test
 	public void createGasto() {
 		GastoDTO gasto = new GastoDTO();
+		when(mapper.toEntity(any(GastoDTO.class))).thenReturn(newGasto());
 		when(repository.save(any(Gasto.class))).thenReturn(newGasto());
 		
 		Gasto gastoCreated = service.createGasto(gasto);

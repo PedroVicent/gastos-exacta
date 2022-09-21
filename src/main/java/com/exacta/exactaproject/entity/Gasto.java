@@ -2,21 +2,22 @@ package com.exacta.exactaproject.entity;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
 @Data
-@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 public class Gasto {
@@ -37,7 +38,7 @@ public class Gasto {
 	@Column(nullable = false)
 	private BigDecimal valor;
 	
-	@Column
-	private String tags;
+	@ManyToMany(cascade = CascadeType.PERSIST)
+	private List<Tag> tags;
 	
 }

@@ -1,6 +1,7 @@
 package com.exacta.exactaproject.entity.dto;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 import lombok.Getter;
 
@@ -10,5 +11,5 @@ public class GastoDTO {
 	private String nomePessoa;
 	private String descricao;
 	private BigDecimal valor;
-	private String tags;
+	private List<String> tags;
 }
